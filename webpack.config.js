@@ -1,4 +1,7 @@
 const path = require('path');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // for code splitting you can use an object
@@ -28,6 +31,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new BundleAnalyzerPlugin(),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
+  ],
 
-  mode: 'production',
+  devServer: {
+    port: 9000,
+  },
+  mode: 'development',
 };
